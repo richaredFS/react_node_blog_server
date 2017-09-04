@@ -1,0 +1,44 @@
+{
+  "name": "blog_koa-node-mysql-server",
+  "version": "1.0.0",
+  "description": "koa node mysql blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "supervisor --harmony index",
+    "server": "node index.js"
+  },
+  "keywords": [
+    "koa",
+    "node",
+    "mysql"
+  ],
+  "author": "Richared",
+  "license": "ISC",
+  "dependencies": {
+    "config-lite": "^2.0.0",
+    "ejs": "^2.5.6",
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-mysql-session": "^0.0.2",
+    "koa-router": "^7.2.1",
+    "koa-session-minimal": "^3.0.4",
+    "koa-static": "^4.0.0",
+    "koa-views": "^6.0.2",
+    "md5": "^2.2.1",
+    "moment": "^2.18.1",
+    "mysql": "^2.13.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.0",
+    "babel-plugin-transform-async-to-generator": "^6.16.0",
+    "babel-plugin-transform-class-properties": "^6.23.0",
+    "babel-plugin-transform-decorators": "^6.13.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
+    "babel-plugin-transform-object-rest-spread": "^6.20.2",
+    "babel-polyfill": "^6.23.0",
+    "koa-cors": "^0.0.16",
+    "supervisor": "^0.12.0"
+  }
+}
