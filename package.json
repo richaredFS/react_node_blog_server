@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "supervisor --harmony index",
-    "server": "node index.js"
+    "server": "node index.js",
+    "pm2": "pm2"
   },
   "keywords": [
     "koa",
@@ -39,6 +40,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.20.2",
     "babel-polyfill": "^6.23.0",
     "koa-cors": "^0.0.16",
+    "pm2": "^2.6.1",
     "supervisor": "^0.12.0"
   }
 }
