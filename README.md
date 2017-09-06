@@ -5,3 +5,7 @@ react_node_blog server 服务端
    ---cnpm install安装依赖
    ---cnpm run server 或者 node index.js启动开发环境
 
+---项目新增pm2来管理进程
+   ---利用pm2启动node程序的方法：pm2 start index.js,
+   ---pm2 list 可以查看当前所有的nodejs进程
+
