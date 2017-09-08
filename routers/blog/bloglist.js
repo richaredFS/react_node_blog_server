@@ -26,7 +26,10 @@ router.post('/bloglist',async (ctx,next)=>{
             }else{
                 ctx.response.body = {
                     resultCode:0,
-                    result:false
+                    result:true,
+                    blogList:[],
+                    //blog的总记录数
+                    totalNum:0
                 }
             }
         })
@@ -53,6 +56,46 @@ router.post('/bloglist/:id',async (ctx,next)=>{
                     blogList:results,
                     //blog的总记录数
                     totalNum:results.length
+                }
+            }else{
+                ctx.response.body = {
+                    resultCode:0,
+                    result:false
+                }
+            }
+        })
+});
+//根据id插入对应的浏览数P
+router.post('/flushPv',async (ctx,next)=>{
+    let id = ctx.request.body.id;
+    //await后面接的是Promise对象，可以用.then()
+    await model.updatePvById(id)
+        .then(result=>{
+            if(result.length !== 0){
+                let results = JSON.parse(JSON.stringify(result));
+                ctx.response.body = {
+                    resultCode:0,
+                    result:true
+                }
+            }else{
+                ctx.response.body = {
+                    resultCode:0,
+                    result:false
+                }
+            }
+        })
+});
+//根据id插入对应的评论数
+router.post('/flushComment',async (ctx,next)=>{
+    let id = ctx.request.body.id;
+    //await后面接的是Promise对象，可以用.then()
+    await model.updateCommentById(id)
+        .then(result=>{
+            if(result.length !== 0){
+                let results = JSON.parse(JSON.stringify(result));
+                ctx.response.body = {
+                    resultCode:0,
+                    result:true
                 }
             }else{
                 ctx.response.body = {

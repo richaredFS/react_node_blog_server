@@ -48,7 +48,8 @@ app.use(require('./routers/blog/publish.js').routes());
 app.use(require('./routers/blog/bloglist.js').routes());
 //获取所有标签的路由，不区分大小写labellist===labelList
 app.use(require('./routers/blog/labellist.js').routes());
-
+//根据id获取所有的评论
+app.use(require('./routers/comment/commentList.js').routes());
 
 app.listen(8080);
 console.log('listening on port'+ config.port)

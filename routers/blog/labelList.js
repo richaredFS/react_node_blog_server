@@ -36,13 +36,14 @@ router.post('/labellist',async (ctx,next)=>{
                     resultCode:0,
                     result:true,
                     labelList:arr,
-                    //blog的总记录数
                     totalNum:arr.length
                 }
             }else{
                 ctx.response.body = {
                     resultCode:0,
-                    result:false
+                    result:true,
+                    labelList:[],
+                    totalNum:0
                 }
             }
         })

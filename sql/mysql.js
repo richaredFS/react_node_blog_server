@@ -119,6 +119,30 @@ let getArticlesById = function ( id ) {
     let _sql = 'select * from blog where id='+id;
     return query( _sql)
 };
+//根据文章id查找所有的评论
+let getComments = function ( id ) {
+    let _sql = 'select * from comment where postid='+id;
+    return query( _sql)
+};
+//根据id插入浏览数
+let updatePvById = function(id){
+    //在同一语句中，不能先select出同一表中的某些值，再update这个表,查询的时候增加一层中间表，就可以避免该错误
+    //(SELECT t.pv from (SELECT pv from blog where id ='+id+')t
+    let _sql = 'update blog set blog.pv=((SELECT t.pv from (SELECT pv from blog where id ='+id+')t)+1) where blog.id='+id;
+    return query( _sql)
+};
+//根据id插入评论数
+let updateCommentById = function(id){
+    //在同一语句中，不能先select出同一表中的某些值，再update这个表,查询的时候增加一层中间表，就可以避免该错误
+    //(SELECT t.pv from (SELECT pv from blog where id ='+id+')t
+    let _sql = 'update blog set blog.comments=((SELECT t.comments from (SELECT comments from blog where id ='+id+')t)+1) where blog.id='+id;
+    return query( _sql)
+};
+//根据postid插入评论内容
+let insertCommentsById = function(value){
+    let _sql = "insert into comment(postid,content,commentator,createTime) values(?,?,?,?)";
+    return query( _sql, value )
+};
 module.exports={
     query,
     createTable,
@@ -127,6 +151,10 @@ module.exports={
     insertArticle,
     getArticles,
     getLabels,
-    getArticlesById
+    getArticlesById,
+    getComments,
+    updatePvById,
+    insertCommentsById,
+    updateCommentById
 }
 
